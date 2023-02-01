@@ -1,0 +1,76 @@
+  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+    <mat-icon fontIcon="menu" [color]="'primary'"></mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="Minha Conta" [matMenuTriggerFor]="userAccountMenu">
+    <mat-icon [color]="'primary'">account_circle</mat-icon>
+  </button>
+  <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+    <button mat-menu-item routerLink="#">
+      <mat-icon [color]="'accent'">person</mat-icon><span>Minha Conta</span>
+    </button>
+<!--    <button mat-menu-item routerLink="#">-->
+<!--      <mat-icon [color]="'accent'">settings</mat-icon><span>Settings</span>-->
+<!--    </button>-->
+    <button mat-menu-item routerLink="#">
+      <mat-icon [color]="'accent'">help</mat-icon><span>Help</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="#">
+      <mat-icon [color]="'accent'">exit_to_app</mat-icon>Sair
+    </button>
+  </mat-menu>
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
+    <mat-nav-list>
+      <mat-list-item routerLink="#">
+        <mat-icon [color]="'accent'">dashboard</mat-icon><span>Dashboard</span>
+      </mat-list-item>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          Clientes
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="#">
+            <mat-icon [color]="'accent'">person_add</mat-icon><span>Cadastrar Cliente</span>
+          </a>
+          <a mat-list-item routerLink="#">
+            <mat-icon [color]="'accent'">person_search</mat-icon><span>Pesquisar Clientes</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          Quartos
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="#">
+            <mat-icon [color]="'accent'">add_home</mat-icon><span>Cadastrar Quarto</span>
+          </a>
+          <a mat-list-item routerLink="#">
+            <mat-icon [color]="'accent'">list_alt</mat-icon><span>Pesquisar Quartos</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header>
+          Reservas
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item routerLink="#">
+            <mat-icon [color]="'accent'">calendar_month</mat-icon><span>Cadastrar Reserva</span>
+          </a>
+          <a mat-list-item routerLink="#">
+            <mat-icon [color]="'accent'">event_note</mat-icon><span>Pesquisar Reservas</span>
+          </a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet>
+      <div class="app-sidenav-content">
+        chama as telas aqui
+      </div>
+    </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

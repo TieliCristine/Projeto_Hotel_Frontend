@@ -1,0 +1,37 @@
+<section class="global-section" fxLayoutAlign="space-around center" fxLayout="row" fxLayout.xs="column">
+  <mat-card-content>
+    <mat-card-title>
+      <h1> Bem-vindo ao Sistema Hotel </h1>
+    </mat-card-title>
+    <img class="global-img-config" src="assets/img-home1.jpg" alt="">
+  </mat-card-content>
+  <mat-card class="global-card">
+    <mat-card-title>
+      <h2>Login</h2>
+    </mat-card-title>
+    <form class="global-form">
+      <mat-form-field appearance="outline" class="global-input-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcherEmail"
+               placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Insira um endereço de email válido
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          O email é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="global-input-width">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcherPassword">
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          A senha é <strong>obrigatória</strong>
+        </mat-error>
+      </mat-form-field>
+      <div fxLayout="column" fxLayoutGap="10px">
+        <a mat-button color="accent" href="https://www.google.com/" target="_blank">Esqueceu a senha?</a>
+        <button mat-raised-button color="primary">Entrar</button>
+      </div>
+    </form>
+  </mat-card>
+</section>
