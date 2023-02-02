@@ -8,7 +8,7 @@ import { first, tap } from "rxjs";
 })
 export class CustomerService {
 
-  private readonly API = './assets/customer.json';
+  private readonly API = 'api/customer';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(this.API)
       .pipe(
         first(),
-        tap(customer => console.log(customer))
+        // tap(customer => console.log(customer))
       )
   }
 }
