@@ -1,5 +1,5 @@
 export interface Customer {
-  id: bigint;
+  id: string;
   cpf: string;
   name: string;
   birthdate: any;

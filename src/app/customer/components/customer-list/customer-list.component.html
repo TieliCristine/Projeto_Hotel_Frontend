@@ -1,49 +1,64 @@
-<mat-card class="global-card">
-  <mat-toolbar color="primary">Lista de Clientes</mat-toolbar>
-  <table mat-table [dataSource]="customer" class="mat-elevation-z8">
+<mat-table [dataSource]="customer">
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID</th>
-      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
-    </ng-container>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+      </ng-container>
 
-    <!-- CPF Column -->
-    <ng-container matColumnDef="cpf">
-      <th mat-header-cell *matHeaderCellDef> CPF</th>
-      <td mat-cell *matCellDef="let element"> {{ element.cpf }} </td>
-    </ng-container>
+      <!-- CPF Column -->
+      <ng-container matColumnDef="cpf">
+        <mat-header-cell *matHeaderCellDef> CPF</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.cpf }} </mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Nome</th>
-      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nome</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
 
-    <!-- Birthdate Column -->
-    <ng-container matColumnDef="birthdate">
-      <th mat-header-cell *matHeaderCellDef> Data de Nasc.</th>
-      <td mat-cell *matCellDef="let element"> {{ element.birthdate }} </td>
-    </ng-container>
+      <!-- Birthdate Column -->
+      <ng-container matColumnDef="birthdate">
+        <mat-header-cell *matHeaderCellDef> Data de Nasc.</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.birthdate }} </mat-cell>
+      </ng-container>
 
-    <!-- Gender Column -->
-    <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef> Genero</th>
-      <td mat-cell *matCellDef="let element"> {{ element.gender }} </td>
-    </ng-container>
+      <!-- Gender Column -->
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Genero</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.gender }} </mat-cell>
+      </ng-container>
 
-    <!-- Mobile Column -->
-    <ng-container matColumnDef="mobile">
-      <th mat-header-cell *matHeaderCellDef> Celular</th>
-      <td mat-cell *matCellDef="let element"> {{ element.mobile }} </td>
-    </ng-container>
+      <!-- Mobile Column -->
+      <ng-container matColumnDef="mobile">
+        <mat-header-cell *matHeaderCellDef> Celular</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.mobile }} </mat-cell>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</mat-card>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="action-column">
+          <button (click)="onAdd()" mat-icon-button color="primary" aria-label="Cadastrar Novo Cliente">
+            <mat-icon>person_add</mat-icon>
+          </button>
+        </mat-header-cell>
 
+        <mat-cell *matCellDef="let customer" class="action-column">
+          <button (click)="onEdit(customer)" mat-icon-button color="accent" aria-label="Editar Cliente">
+            <mat-icon>edit</mat-icon>
+          </button>
 
+          <button (click)="onDelete(customer)" mat-icon-button color="warn" aria-label="Excluir Cliente">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-cell>
+      </ng-container>
+</mat-table>
 
 
 

@@ -1,43 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-//@use "./styles/typography/config" as typography;
 @include mat.core();
-
-
-$custom-app-primary: mat.define-palette(mat.$light-blue-palette, 900);
-$custom-app-accent: mat.define-palette(mat.$amber-palette, A200, A400, A700);
-$custom-app-warn: mat.define-palette(mat.$red-palette);
-////mat.define-typography-level( font-size px, line-height px, style font)
-//$typography-configuration: mat.define-typography-config(
-//  $display-4: mat.define-typography-level(112px, 112px, 900),
-//  $display-3: mat.define-typography-level(75px, 78px, 900),
-//  $display-2: mat.define-typography-level(60px, 65px, 800),
-//  $display-1: mat.define-typography-level(14px, 0px, 400),
-//  $headline: mat.define-typography-level(40px, 50px, 700),
-//  $title: mat.define-typography-level(16px, 16px, 700),
-//  $subheading-2: mat.define-typography-level(30px, 30px, 600),
-//  $subheading-1: mat.define-typography-level(25px, 25px, 500),
-//  $body-2: mat.define-typography-level(16px, 16px, 700),
-//  $body-1: mat.define-typography-level(16px, 16px, 400),
-//  $caption: mat.define-typography-level(12px, 0px, 500),
-//  $button: mat.define-typography-level(14px, 5px, 500),
-//  $input: mat.define-typography-level(14px, 1.125, 500)
-//);
-
-
 
 $custom-theme: mat.define-light-theme((
   color: (
-    primary: $custom-app-primary,
-    accent: $custom-app-accent,
-    warn: $custom-app-warn,
+    primary: mat.define-palette(mat.$light-blue-palette, 900),
+    accent: mat.define-palette(mat.$yellow-palette, 700),
+    warn: mat.define-palette(mat.$red-palette),
   ),
 ));
 
 @include mat.all-component-themes($custom-theme);
-@include mat.core-theme($custom-theme);
 
-//@include mat.core(typography.$typography-configuration);
 
 html, body {
   height: 100%;
@@ -78,6 +51,25 @@ body {
   margin: 20px;
 }
 
-table {
-  width: 100%;
+mat-table {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.loading-spinner{
+  background: rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column-flex{
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+}
+
+.action-column{
+  flex: 0 0 125px;
 }

@@ -1,0 +1,87 @@
+<mat-card class="form-size">
+  <mat-card-title>
+    <h2>Cadastrar Cliente</h2>
+  </mat-card-title>
+  <mat-stepper linear #stepper>
+
+ ---------------------------------------------- ** STEP 1 ** ----------------------------------------------
+
+    <mat-step [stepControl]="formGroup" [editable]="isEditable">
+      <form [formGroup]="formGroup" >
+        <ng-template matStepLabel>Dados Pessoais</ng-template>
+
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+          <input matInput formControlName="cpf" required [maxLength]="11">
+          <mat-error *ngIf="formGroup.get('cpf')?.invalid">{{
+            getErrorMessage('cpf')
+            }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [color]="colorControl.value!">
+          <mat-label>Name Completo</mat-label>
+          <input matInput formControlName="name" required>
+          <mat-error *ngIf="formGroup.get('name')?.invalid">{{
+            getErrorMessage('name')
+            }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput formControlName="birthdate" placeholder="YYYY/MM/DD" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Gênero</mat-label>
+          <mat-select formControlName="gender" required>
+            <mat-option value="Feminino">Feminino</mat-option>
+            <mat-option value="Masculino">Masculino</mat-option>
+            <mat-option value="Não Informar">Não Informar</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Celular</mat-label>
+          <input matInput formControlName="mobile" placeholder="(00) 00000-0000" required [maxLength]="11">
+          <mat-error *ngIf="formGroup.get('mobile')?.invalid">{{
+            getErrorMessage('mobile')
+            }}</mat-error>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button color="warn" type="button" mat-raised-button (click)="onCancel()">Cancelar</button>
+          <button color="primary" type="button" mat-raised-button matStepperNext>Próximo</button>
+        </mat-card-actions>
+      </form>
+    </mat-step>
+
+ ---------------------------------------------- ** STEP 2 ** ----------------------------------------------
+
+<!--    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">-->
+<!--      <form [formGroup]="secondFormGroup">-->
+<!--        <ng-template matStepLabel>Fill out your address</ng-template>-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Address</mat-label>-->
+<!--          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"-->
+<!--                 required>-->
+<!--        </mat-form-field>-->
+<!--        <mat-card-actions>-->
+<!--          <button color="accent" type="button" mat-button matStepperPrevious>Voltar</button>-->
+<!--          <button color="primary" type="button" mat-raised-button matStepperNext>Próximo</button>-->
+<!--        </mat-card-actions>-->
+<!--      </form>-->
+<!--    </mat-step>-->
+
+ ---------------------------------------------- ** STEP 3 ** ----------------------------------------------
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <mat-card-actions>
+        <button color="accent" type="button" mat-button matStepperPrevious>Voltar</button>
+        <button color="warn" type="button" mat-raised-button (click)="stepper.reset()">Limpar</button>
+        <button color="primary" type="button" mat-raised-button (click)="onSubmit()">Salvar</button>
+      </mat-card-actions>
+    </mat-step>
+  </mat-stepper>
+</mat-card>
