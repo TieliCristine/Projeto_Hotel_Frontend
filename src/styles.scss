@@ -31,6 +31,10 @@ body {
   padding: 15px;
 }
 
+mat-card-actions{
+  justify-content: center;
+}
+
 .global-img-config {
   width: 100%;
 }
@@ -72,4 +76,8 @@ mat-table {
 
 .action-column{
   flex: 0 0 125px;
+}
+
+.btn-config{
+  margin-left: 10px;
 }

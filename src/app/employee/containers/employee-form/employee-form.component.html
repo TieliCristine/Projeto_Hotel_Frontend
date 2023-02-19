@@ -1,10 +1,10 @@
 <mat-card class="form-size">
   <mat-card-title>
-    <h2>Cadastrar Cliente</h2>
+    <h2>Cadastrar Empregado</h2>
   </mat-card-title>
   <mat-stepper linear #stepper>
 
- ---------------------------------------------- ** STEP 1 ** ----------------------------------------------
+    ---------------------------------------------- ** STEP 1 ** ----------------------------------------------
 
     <mat-step [stepControl]="formGroup" [editable]="isEditable">
       <form [formGroup]="formGroup" >
@@ -48,33 +48,41 @@
             }}</mat-error>
         </mat-form-field>
 
+        <mat-form-field appearance="outline">
+          <mat-label>Cargo</mat-label>
+          <input matInput placeholder="Recepcionista" required [maxLength]="15">
+          <mat-error *ngIf="formGroup.get('office')?.invalid">{{
+            getErrorMessage('office')
+            }}</mat-error>
+        </mat-form-field>
+
         <mat-card-actions>
           <button color="warn" type="button" mat-raised-button (click)="onCancel()">Cancelar</button>
           <button color="primary" type="button" mat-raised-button matStepperNext
-            class="btn-config"
+                  class="btn-config"
           >Próximo</button>
         </mat-card-actions>
       </form>
     </mat-step>
 
- ---------------------------------------------- ** STEP 2 ** ----------------------------------------------
+    ---------------------------------------------- ** STEP 2 ** ----------------------------------------------
 
-<!--    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">-->
-<!--      <form [formGroup]="secondFormGroup">-->
-<!--        <ng-template matStepLabel>Fill out your address</ng-template>-->
-<!--        <mat-form-field appearance="outline">-->
-<!--          <mat-label>Address</mat-label>-->
-<!--          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"-->
-<!--                 required>-->
-<!--        </mat-form-field>-->
-<!--        <mat-card-actions>-->
-<!--          <button color="accent" type="button" mat-button matStepperPrevious>Voltar</button>-->
-<!--          <button color="primary" type="button" mat-raised-button matStepperNext>Próximo</button>-->
-<!--        </mat-card-actions>-->
-<!--      </form>-->
-<!--    </mat-step>-->
+    <!--    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">-->
+    <!--      <form [formGroup]="secondFormGroup">-->
+    <!--        <ng-template matStepLabel>Fill out your address</ng-template>-->
+    <!--        <mat-form-field appearance="outline">-->
+    <!--          <mat-label>Address</mat-label>-->
+    <!--          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"-->
+    <!--                 required>-->
+    <!--        </mat-form-field>-->
+    <!--        <mat-card-actions>-->
+    <!--          <button color="accent" type="button" mat-button matStepperPrevious>Voltar</button>-->
+    <!--          <button color="primary" type="button" mat-raised-button matStepperNext>Próximo</button>-->
+    <!--        </mat-card-actions>-->
+    <!--      </form>-->
+    <!--    </mat-step>-->
 
- ---------------------------------------------- ** STEP 3 ** ----------------------------------------------
+    ---------------------------------------------- ** STEP 3 ** ----------------------------------------------
 
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
@@ -82,10 +90,10 @@
       <mat-card-actions>
         <button color="accent" type="button" mat-button matStepperPrevious>Voltar</button>
         <button color="warn" type="button" mat-raised-button (click)="stepper.reset()"
-          class="btn-config"
+                class="btn-config"
         >Limpar</button>
         <button color="primary" type="button" mat-raised-button (click)="onSubmit()"
-          class="btn-config"
+                class="btn-config"
         >Salvar</button>
       </mat-card-actions>
     </mat-step>
